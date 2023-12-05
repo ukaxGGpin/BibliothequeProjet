@@ -19,11 +19,13 @@
       <div class="row">
     
           <div class="col-md-8">
-        
-          caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel 
-          caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel 
-          caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel caroussel 
-        
+          <div class="carousel-item">
+  <img src="bleak.jpg" alt="Los Angeles">
+  <div class="carousel-caption">
+    <h3>BLEAK/h3>
+    <p>Crée par le célebre YouTuber Squeezie</p>
+  </div>
+</div>
           </div>
         
           <div class="col-md-4">
