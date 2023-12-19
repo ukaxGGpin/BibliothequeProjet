@@ -1,21 +1,43 @@
 <?php
+// Paramètres de connexion à la base de données
 session_start();
 require_once('connexionSql.php');
-if (isset($_POST["mail"])) {
-  $mail=$_POST["mail"];
-  $Mdp=$_POST["Mdp"];
-  $stmt = $connexion->prepare("SELECT * FROM utilisateur where mel=:mail AND motdepasse=:Mdp");
-  $stmt->bindValue(":mail", $mail); // pas de troisième paramètre STR par défaut
-  $stmt->bindValue(":Mdp", $Mdp); // idem
-  $stmt->setFetchMode(PDO::FETCH_OBJ);
-  // Les résultats retournés par la requête seront traités en 'mode' objet
-  $stmt->execute();
-  // Parcours des enregistrements retournés par la requête : premier, deuxième…
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérification des champs du formulaire
+    if (isset($_POST['mail']) && isset($_POST['Mdp'])) {
+        // Connexion à la base de données
+        try {
+            //$connexion = new PDO("mysql:host=localhost;dbname=bibliodrive", $utilisateur, $mot_de_passe);
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  if($enregistrement = $stmt->fetch())
-  {
-    echo "Bienvenue.$mail."
-  }
+            // Requête préparée pour l'authentification
+            $requete_authentification = $connexion->prepare("SELECT mel, nom FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
+
+            // Vos variables provenant du formulaire
+            $email = $_POST['mail'];
+            $mdp = $_POST['Mdp'];
+
+            // Exécution de la requête préparée pour l'authentification
+            $requete_authentification->bindParam(':email', $email);
+            $requete_authentification->bindParam(':mdp', $mdp);
+            $requete_authentification->execute();
+
+            // Vérification de l'authentification et affichage des données si authentifié
+            if ($requete_authentification->rowCount() > 0) {
+                $utilisateur = $requete_authentification->fetch(PDO::FETCH_ASSOC);
+                echo "Authentification réussie !<br>";
+                echo "Bienvenue " . $utilisateur['nom'] . "<br>";
+                echo "Email: " . $utilisateur['email'] . "<br>";
+                // Autres actions après l'authentification réussie
+            } else {
+                echo "Email ou mot de passe incorrect.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur de connexion: " . $e->getMessage();
+        }
+    } else {
+        echo "Tous les champs sont requis.";
+    }
 }
 ?>
 <table>
