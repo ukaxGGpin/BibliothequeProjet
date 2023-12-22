@@ -1,15 +1,12 @@
 <?php
 // Paramètres de connexion à la base de données
-session_start();
 require_once('connexionSql.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification des champs du formulaire
     if (isset($_POST['mail']) && isset($_POST['Mdp'])) {
-        // Connexion à la base de données
         try {
-            //$connexion = new PDO("mysql:host=localhost;dbname=bibliodrive", $utilisateur, $mot_de_passe);
+           
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             // Requête préparée pour l'authentification
             $requete_authentification = $connexion->prepare("SELECT mel, nom FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
 
@@ -27,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $utilisateur = $requete_authentification->fetch(PDO::FETCH_ASSOC);
                 echo "Authentification réussie !<br>";
                 echo "Bienvenue " . $utilisateur['nom'] . "<br>";
-                echo "Email: " . $utilisateur['email'] . "<br>";
+                echo "Email: " . $utilisateur['mel'] . "<br>";
                 // Autres actions après l'authentification réussie
+                exit ;
             } else {
                 echo "Email ou mot de passe incorrect.";
             }
@@ -40,18 +38,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<table>
-<h2>Se connecter</h2>
-<form action="authentification.php" method="post">
-          <tr>
-          <label for="email">Mail:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="mail">
-          <label for="pwd">Mot de passe:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="Mdp">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> se souvenir de moi
-          </label><br>
-        <button type="submit" class="btn btn-primary">se connecter</button>
-      </tr>
-    </table>  
-      </form>
+
+    <table>
+    <h2>Se connecter</h2>
+    <form  method="post">
+              <tr>
+              <label for="email">Mail:</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="mail">
+              <label for="pwd">Mot de passe:</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="Mdp">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember"> se souvenir de moi
+              </label><br>
+            <button type="submit" class="btn btn-primary">se connecter</button>
+        </tr>
+    </form>
+    <form action="AjouteUnMembre.php">
+     <button type="submit" class="btn btn-primary">Crée un compte</button>
+    </form>
+        </table>  
+

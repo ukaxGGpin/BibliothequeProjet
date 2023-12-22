@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid ">
   <div class="row">
     <div class="col-md-12">
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <form action="recherche.php" class="d-flex col-md-8 col-sm-8">
-          <input class="form-control me-5" type="text" placeholder="Nom de l'auteur">
+        <form action="recherche.php" method="post" class="d-flex col-md-8 col-sm-8">
+          <input class="form-control me-5" type="text" placeholder="Nom de l'auteur" name="recherche">
           <button class="btn btn-primary" type="button">Recherche</button>
         </form>
         <div class="container-fluid col-md-3 col-sm-3">
@@ -16,9 +16,7 @@
             <img src="logo-bibliotheque_23-2147505735.avif" alt="Logo" style="width:70px;" class="rounded-pill">
           </a>
         </div>
+      </nav>
     </div>
-    </nav>
-
   </div>
-
 </div>

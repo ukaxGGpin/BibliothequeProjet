@@ -10,10 +10,17 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="text-center alert alert-danger container-fluid ">
+              <p>
+              <h5 >ATTENTION ! La Bibliotheque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
+                retirer vos livre via notre service de Bibliotheque en ligne!</h5>
+              </p>
+            </div>
+  <div class="container-fluid">
     <!-- En-tête -->
     <?php
-      include("entete.html");
+    session_start();
+    include("entete.html");
     ?>
     <!-- Corps page principale -->
       <div class="row">
@@ -34,21 +41,21 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="images/bleak.jpg" alt="Bleak" class="d-block" style="width: 800px; length: 500px;">
+                <img src="images/bleak.jpg" alt="Bleak" class="d-block ; ">
                 <div class="carousel-caption">
                   <h3>Squezzie</h3>
                   <p>Livre d'horreur du célèbre Youtubeur Squezzie</p>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="images/NoetMoi.jpg" alt="NoetMoi" class="d-block" style="width: 800px;length: 80px;">
+                <img src="images/NoetMoi.jpg" alt="NoetMoi" class="d-block ">
                 <div class="carousel-caption">
                   <h3>Delphine de Vigan</h3>
                   <p>Histoire passionnate du jeune fille et d'une sdf</p>
                 </div> 
               </div>
               <div class="carousel-item">
-                <img src="images/lesMisérables.jpg" alt="LesMisérables" class="d-block" style="width: 800px;length: 300px;">
+                <img src="images/lesMisérables.jpg" alt="LesMisérables" class="d-block ">
                 <div class="carousel-caption">
                   <h3>Victor Hgo</h3>
                   <p>L'un des livre les plus prisés du célèbre écrivain Victor Hugo</p>
@@ -75,58 +82,7 @@
       </div>
   </div>
 
-
-  <!--  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <form class="d-flex col-sm-8">
-        <input class="form-control me-5" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
-      </form>
-      <div class="container-fluid col-sm-3 ">
-        <form action="panier.php" method="post">
-          <button class="btn btn-primary" type="button">Panier</button>
-        </form>
-      </div>
-      <div class="container-fluid col-sm-2">
-        <a class="navbar-brand">
-          <img src="logo-bibliotheque_23-2147505735.avif" alt="Logo" style="width:70px;" class="rounded-pill">
-        </a>
-      </div>
-    </nav>
-    <div class="container mt-3">
-      <h2>Se connecter</h2>
-      <form action="">
-        <div class="mb-3 mt-3">
-          <label for="email">Mail:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="mail">
-        </div>
-        <div class="mb-3">
-          <label for="pwd">Mot de passe:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="Mdp">
-        </div>
-        <div class="form-check mb-3">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> Remember me
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">se connecter</button>
-      </form>
-    </div>
-    
-       
-
-  </form>
-</div>
--->
   </div>
-  <footer>
-  <div class="container-fluid ">
-    <div class="texte-center">
-        <p>
-        <h5 class="texte-center">La Bibliotheque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
-          retirer vos livre via notre service de Bibliotheque en ligne!</h5>
-        </p>
-      </div>
-    </footer>
 
 </body>
 
