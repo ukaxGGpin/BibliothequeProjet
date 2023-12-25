@@ -38,6 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nb_ligne_affectees = $stmt->rowCount();
     echo $nb_ligne_affectees . " Inscription enregistrée";
     $dernier_numero = $connexion->lastInsertId();
+   
+    if ($nb_ligne_affectees > 0) {
+      echo "Votre inscription a été enregistrée. ";
+      echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
+  }
 }
 ?>
 
