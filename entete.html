@@ -1,22 +1,81 @@
-<div class="container-fluid ">
-  <div class="row">
-    <div class="col-md-12">
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <form action="recherche.php" method="post" class="d-flex col-md-8 col-sm-8">
-          <input class="form-control me-5" type="text" placeholder="Nom de l'auteur" name="recherche">
-          <button class="btn btn-primary" type="button">Recherche</button>
-        </form>
-        <div class="container-fluid col-md-3 col-sm-3">
-          <form action="panier.php" method="post">
-            <button class="btn btn-primary" type="button">Panier</button>
-          </form>
-        </div>
-        <div class="container-fluid col-md-2 col-sm-2">
-          <a class="navbar-brand">
-            <img src="logo-bibliotheque_23-2147505735.avif" alt="Logo" style="width:70px;" class="rounded-pill">
-          </a>
-        </div>
-      </nav>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar personnalisée</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* CSS pour centrer la barre de navigation */
+    .navbar-custom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white; /* Fond blanc pour la barre de navigation */
+      padding: 10px; /* Ajout de padding pour l'espace intérieur */
+    }
+
+    /* CSS pour arrondir les coins de l'input de recherche */
+    .form-control {
+      border-radius: 20px; /* Ajustement pour les coins arrondis */
+    }
+
+    /* CSS pour la taille des éléments */
+    .search-input {
+      flex: 7; /* 70% de l'espace */
+    }
+
+    .search-btn {
+      flex: 1; /* 10% de l'espace */
+    }
+
+    .panier-btn {
+      flex: 1; /* 10% de l'espace */
+    }
+
+    .logo {
+      flex: 1; /* Espace restant */
+      display: flex;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-custom">
+          <div class="search-input">
+            <form action="recherche.php" method="post" class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Nom de l'auteur" name="recherche">
+            </form>
+          </div>
+          <div class="search-btn">
+            <button class="btn btn-primary" type="submit">
+              Recherche
+            </button>
+          </div>
+          <div class="panier-btn">
+            <form action="panier.php" method="post">
+              <button class="btn btn-primary" type="submit">
+                Panier
+              </button>
+            </form>
+          </div>
+          <div class="logo">
+            <a class="navbar-brand">
+              <img src="logo-bibliotheque_23-2147505735.avif" alt="Logo" style="width:70px;" class="rounded-pill">
+            </a>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
-</div>
+
+</body>
+
+</html>
+

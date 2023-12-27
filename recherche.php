@@ -26,23 +26,36 @@
       <div class="row">
         <div class="col-md-8">
             <?php
-            require_once('connexionSql.php');           
-            // Nom de l'auteur pour lequel on souhaite récupérer les livres
-            $nom_auteur =$_POST['recherche'];            
-            // Requête SQL pour récupérer les livres de l'auteur renseigner
-            $sql = "SELECT * FROM livre WHERE noauteur = '$nom_auteur'";           
-            $resultat = $connexion->query($sql);            
-            // Vérifier s'il y a des résultats
-            if ($resultat) {
-                // Afficher les livres de l'auteur
-                while ($ligne = $resultat->fetch(PDO::FETCH_ASSOC)); { 
-                    echo "Titre : " . $ligne["titre"] . " - Auteur : " . $ligne["noauteur"] . "<br>";
-                }
-            } else {
-                echo "Aucun livre trouvé pour cet auteur.";
-            }            
-            ?>
+            //connexion a base SQL
+  require_once('connexionSql.php');           
+            // Vérifier si une recherche a été effectuée
+if (isset($_POST['recherche']) && !empty($_POST['recherche'])) {
+  $nom_auteur = $_POST['recherche'];
 
+  // Préparer la requête SQL pour rechercher les livres liés à l'auteur recherché
+  $requete = "SELECT livre.titre FROM livre INNER JOIN auteur ON livre.noauteur = auteur.noauteur WHERE auteur.nom = '$nom_auteur'";
+  // Exécuter la requête
+  $resultat = $connexion->query($requete);
+
+  if ($resultat) {
+      // Afficher les résultats de la recherche
+      if ($resultat->rowCount() > 0) {
+          echo '<div class="text-center">';
+          echo "<h5 class= text_center>Livres de l'auteur $nom_auteur :</h2>";
+          echo "</div>";
+          while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) {
+              echo "<a href" .  $row['titre'] .  "</a>";
+          }
+          
+      } else {
+          echo "Aucun livre trouvé pour cet auteur.";
+      }
+      
+    } else {
+      echo "Erreur dans la requête : " . $connexion->error;
+  }
+}
+   ?>
         <div class="col-md-4">
       
           <?php
