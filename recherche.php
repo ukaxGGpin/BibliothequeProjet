@@ -13,7 +13,7 @@
     <body>
         <div class="text-center alert alert-danger container-fluid ">
               <p>
-              <h5 >ATTENTION ! La Bibliotheque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
+              <h5 >ATTENTION ! La Bibliothèque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
                 retirer vos livre via notre service de Bibliotheque en ligne!</h5>
               </p>
             </div>
