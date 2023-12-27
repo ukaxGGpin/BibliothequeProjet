@@ -10,7 +10,7 @@ if(isset($_SESSION['utilisateur_connecte'])) {
     echo "Bienvenue " . $_SESSION['nom_utilisateur'] . "<br>";
     echo "Email: " . $_SESSION['email_utilisateur'] . "<br>";
     echo '<form action="deconnexion.php" method="post">';
-    echo '<button type="submit" class="btn btn-primary">Se déconnecter</button>';
+    echo '<br><button type="submit" class="btn btn-primary">Se déconnecter</button>';
     echo '</form>';
     echo "</td></tr>";
     echo "</table>";

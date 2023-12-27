@@ -2,12 +2,12 @@
 // Démarrez la session
 session_start();
 
-// Détruisez la session si elle est initialisée
+// Détruire la session si elle est lancée
 if (isset($_SESSION['utilisateur_connecte'])) {
     session_destroy();
 }
 
-// Redirigez l'utilisateur vers une page appropriée après la déconnexion
-header("Location: accueil.php"); // Assurez-vous que c'est le bon chemin vers votre page d'authentification
+// Redirige l'utilisateur vers la page d'acceuil (authentification.php)
+header("Location: accueil.php"); 
 exit;
 ?>
