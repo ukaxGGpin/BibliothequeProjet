@@ -19,3 +19,12 @@
 img {
   border-radius: 70px;
 }
+.rounded-table {
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.rounded-table td, .rounded-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
