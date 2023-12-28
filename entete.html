@@ -7,35 +7,35 @@
   <title>Navbar personnalisée</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-    /* CSS pour centrer la barre de navigation */
+    
     .navbar-custom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: white; /* Fond blanc pour la barre de navigation */
-      padding: 10px; /* Ajout de padding pour l'espace intérieur */
+      background-color: transparent;
+
     }
 
-    /* CSS pour arrondir les coins de l'input de recherche */
+    
     .form-control {
-      border-radius: 20px; /* Ajustement pour les coins arrondis */
+      border-radius: 20px;
     }
+    
 
-    /* CSS pour la taille des éléments */
     .search-input {
-      flex: 7; /* 70% de l'espace */
+      flex: 7;
     }
 
     .search-btn {
-      flex: 1; /* 10% de l'espace */
+      flex: 1;
     }
 
     .panier-btn {
-      flex: 1; /* 10% de l'espace */
+      flex: 1; 
     }
 
     .logo {
-      flex: 1; /* Espace restant */
+      flex: 1;
       display: flex;
       justify-content: flex-end;
     }
@@ -47,7 +47,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-custom">
+        <nav class="navbar navbar-expand-sm navbar-custom">
           <div class="search-input">
             <form action="recherche.php" method="post" class="d-flex">
               <input class="form-control me-2" type="text" placeholder="Nom de l'auteur" name="recherche">

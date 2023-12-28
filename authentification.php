@@ -1,11 +1,46 @@
 <?php
 require_once('connexionSql.php');
 
+// Vérifiez si le formulaire de connexion a été soumis
+if (isset($_POST['submit'])) {
+    if (isset($_POST['mail']) && isset($_POST['Mdp'])) {
+        try {
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Requête préparée pour l'authentification
+            $requete_authentification = $connexion->prepare("SELECT mel, nom FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
+
+            $email = $_POST['mail'];
+            $mdp = $_POST['Mdp'];
+
+            $requete_authentification->bindParam(':email', $email);
+            $requete_authentification->bindParam(':mdp', $mdp);
+            $requete_authentification->execute();
+
+            if ($requete_authentification->rowCount() > 0) {
+                $utilisateur = $requete_authentification->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['utilisateur_connecte'] = true;
+                $_SESSION['nom_utilisateur'] = $utilisateur['nom'];
+                $_SESSION['email_utilisateur'] = $utilisateur['mel'];
+
+                // Redirection ou autre action après une authentification réussie
+            } else {
+                echo "Email ou mot de passe incorrect.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur de connexion: " . $e->getMessage();
+        }
+    } else {
+        echo "Tous les champs sont requis.";
+    }
+}
+
+
 // Vérifiez si l'utilisateur est déjà connecté
-if(isset($_SESSION['utilisateur_connecte'])) {
+if (isset($_SESSION['utilisateur_connecte'])) {
     // Affichez les informations de l'utilisateur connecté et le bouton de déconnexion
     echo'<div class="text-center"';
-    echo "<table class='rounded-table'>";
+    echo '<table class="rounded-table" style="padding: 1rem; background-color: #fff !important;">';
     echo "<tr><td>";
     echo "Bienvenue " . $_SESSION['nom_utilisateur'] . "<br>";
     echo "Email: " . $_SESSION['email_utilisateur'] . "<br>";
@@ -15,11 +50,11 @@ if(isset($_SESSION['utilisateur_connecte'])) {
     echo "</td></tr>";
     echo "</table>";
     echo "</div>";
-
-} else {
+} 
+ else {
     // Si l'utilisateur n'est pas connecté, affichez le formulaire de connexion
-    echo'<div class="text-center"';
-    echo '<table class="rounded-table">';
+    echo'<div class="text-center" style="display: flex !important; justify-content: center !important; align-items: center !important; height: 70%; margin-right: 1rem;">';
+    echo '<table class="rounded-table" style="background-color: #fff !important; min-width: 70%; padding: .5rem !important; min-height: 70%;">';
     echo '<tr><td>';
     echo '<h2>Se connecter</h2>';
     echo '<form method="post">';
@@ -34,7 +69,7 @@ if(isset($_SESSION['utilisateur_connecte'])) {
     echo '<button type="submit" class="btn btn-primary" name="submit">Se connecter</button>';
     echo '</div>';
     echo '</form>';
-    echo '<form action="AjouteUnMembre.php">';
+    echo '<br><form action="AjouteUnMembre.php">';
     echo '<div class="d-grid gap-2">';
     echo '<button type="submit" class="btn btn-primary">Créer un compte</button>';
     echo '</div>';
@@ -43,45 +78,7 @@ if(isset($_SESSION['utilisateur_connecte'])) {
     echo '</table>';
     echo "</div>";
 
-    if (isset($_POST['submit'])) {
-        if (isset($_POST['mail']) && isset($_POST['Mdp'])) {
-            try {
-                $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                // Requête préparée pour l'authentification
-                $requete_authentification = $connexion->prepare("SELECT mel, nom FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
-                
-                // Vos variables provenant du formulaire
-                $email = $_POST['mail'];
-                $mdp = $_POST['Mdp'];
+   }
 
-                // Exécution de la requête préparée pour l'authentification
-                $requete_authentification->bindParam(':email', $email);
-                $requete_authentification->bindParam(':mdp', $mdp);
-                $requete_authentification->execute();
-
-                // Vérification de l'authentification et affichage des données si authentifié
-                if ($requete_authentification->rowCount() > 0) {
-                    // Stockez les informations de l'utilisateur dans la session
-                    $utilisateur = $requete_authentification->fetch(PDO::FETCH_ASSOC);
-                    $_SESSION['utilisateur_connecte'] = true;
-                    $_SESSION['nom_utilisateur'] = $utilisateur['nom'];
-                    $_SESSION['email_utilisateur'] = $utilisateur['mel'];
-                    
-                    // Affichage d'un message de bienvenue
-                    echo "Authentification réussie !<br>";
-                    echo "Bienvenue " . $_SESSION['nom_utilisateur'] . "<br>";
-                    echo "Email: " . $_SESSION['email_utilisateur'] . "<br>";
-                } else {
-                    echo "Email ou mot de passe incorrect.";
-                }
-            } catch (PDOException $e) {
-                echo "Erreur de connexion: " . $e->getMessage();
-            }
-        } else {
-            echo "Tous les champs sont requis.";
-        }
-    }
-}
 ?>
-
 

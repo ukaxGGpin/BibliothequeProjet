@@ -14,12 +14,14 @@
 <body>
   <div class="text-center alert alert-danger container-fluid ">
               <p>
-              <h5 >ATTENTION ! La Bibliotheque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
+              <h5 >ATTENTION ! La Bibliothèque LSB est fermée au public j'usqu'a nouvel ordre. Mais il vous est possible de réservé et
                 retirer vos livre via notre service de Bibliotheque en ligne!</h5>
               </p>
             </div>
   <div class="container-fluid">
     <!-- En-tête -->
+   
+    <div class="background-div">
     <?php
     session_start();
     include("entete.html");
@@ -39,7 +41,7 @@
 
             <!-- The slideshow/carousel -->
             <div class="text-center">
-              <h2>Derniere acquisition</h2>
+              <h2 style="color: #fff;">Derniere acquisition</h2>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -82,9 +84,9 @@
           ?>
         </div>
       </div>
+    </div>
   </div>
-
-  </div>
+</div>
 
 </body>
 

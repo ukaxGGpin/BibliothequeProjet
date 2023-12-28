@@ -34,3 +34,14 @@ table {
 button {
   border-radius: 70px;
 }
+
+.background-div {
+  background-image: url('images/Fond.jpg') !important; 
+  background-size: cover !important; 
+  background-position: center !important; 
+  background-repeat: no-repeat !important; 
+  z-index: 1 !important; 
+  position: relative !important; 
+  width: 100% !important; 
+  height: 100% !important; 
+}
