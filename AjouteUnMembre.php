@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->execute();
     $nb_ligne_affectees = $stmt->rowCount();
-    echo $nb_ligne_affectees . " Inscription enregistrée";
+    $nb_ligne_affectees . " Inscription enregistrée";
     $dernier_numero = $connexion->lastInsertId();
    
     if ($nb_ligne_affectees > 0) {

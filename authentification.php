@@ -53,18 +53,29 @@ if (isset($_SESSION['utilisateur_connecte'])) {
 } 
  else {
     // Si l'utilisateur n'est pas connecté, affichez le formulaire de connexion
-    echo'<div class="text-center" style="display: flex !important; justify-content: center !important; align-items: center !important; height: 70%; margin-right: 1rem;">';
-    echo '<table class="rounded-table" style="background-color: #fff !important; min-width: 70%; padding: .5rem !important; min-height: 70%;">';
+    echo '<div class="login-card-container">';
+    echo '<div class="login-card">';
+    echo ' <div class="login-card-logo">';
+    echo '<img src="images/logo.png" alt="logo">';
+    echo '<div class="text-center" style="display: flex !important; justify-content: center !important; align-items: center !important; height: 70%; margin-right: 1rem;">';
+    echo '<table class="rounded-table" style="background-color: #fff !important; min-width: 70%; padding: .5rem !important; min-height: 70%; //">';
     echo '<tr><td>';
+    echo '<div class="login-card-header">';//git
     echo '<h2>Se connecter</h2>';
-    echo '<form method="post">';
-    echo '<label for="email">Mail:</label>';
-    echo '<input type="email" class="form-control" id="email" placeholder="Entrer votre mail" name="mail"><br>';
-    echo '<label for="pwd">Mot de passe:</label>';
-    echo '<input type="password" class="form-control" id="pwd" placeholder="Entrer votre mot de passe" name="Mdp"><br>';
-    echo '<label class="form-check-label">';
-    echo '<input class="form-check-input" type="checkbox" name="remember"> se souvenir de moi';
-    echo '</label><br>';
+    echo '</div>';
+    echo '<form class="login-card-form" method="post">';//git
+    echo '<div class="form-item">';//git
+    echo '<span class="form-item-icon material-symbols-rounded">mail</span>';//git
+    echo '<label for="email"></label>';
+    echo '<input type="email" class="form-control" id="email" placeholder="Entrer votre mail" name="mail"autofocus required><br>';
+    echo '<label for="pwd"></label>';
+    echo '<div class="form-item">';//git
+    echo '<span class="form-item-icon material-symbols-rounded">lock</span>';
+    echo '<input type="password" class="form-control" id="pwd" placeholder="Entrer votre mot de passe" name="Mdp"autofocus required><br>';
+    echo '<div class="form-item-other">';
+    echo '<div class="checkbox">';
+    echo '<input type="checkbox" id="rememberMeCheckbox" checked>';
+    echo '<label for="rememberMeCheckbox">Se souvenir de moi</label><br>';
     echo '<div class="d-grid gap-2">';
     echo '<button type="submit" class="btn btn-primary" name="submit">Se connecter</button>';
     echo '</div>';
