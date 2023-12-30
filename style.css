@@ -8,7 +8,7 @@ body {
     background: linear-gradient(to right, #333399, #ff00cc);
     display: flex;
     justify-content: center;
-    align-items: center;
+  
 }
 
 .carousel-item img {

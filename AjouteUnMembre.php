@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
   <div class="mb-3 mt-3">
     <label for="Mdp" class="form-label">Mot de passe:</label>
-    <input type="password" class="form-control"  placeholder="Entrer votre mail" name="Mdp">
+    <input type="password" class="form-control"  placeholder="Entrer votre Mot de passe" name="Mdp">
   </div>
   <div class="mb-3 mt-3">
     <label for="adresse" class="form-label">Adresse:</label>
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
   <div class="mb-3">
     <label for="codepostal" class="form-label">Code Postal:</label>
-    <input type="text" class="form-control"  placeholder="Entrer un mot de passe" name="CodePostal">
+    <input type="text" class="form-control"  placeholder="Entrer votre code postal" name="CodePostal">
   </div>
   <div class="dropdown">
                 <label for="Profil" class="form-label">Profil:</label>
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <option value="Admin">Admin</option>
                 </select>
             </div>
-  <button type="submit" class="btn btn-primary">Crée votre compte</button>
+  <br><button type="submit" class="btn btn-primary">Crée votre compte</button>
 </form>
 </tr>
 </table>

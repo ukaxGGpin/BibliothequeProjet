@@ -40,7 +40,9 @@ if (isset($_POST['submit'])) {
 if (isset($_SESSION['utilisateur_connecte'])) {
     // Affichez les informations de l'utilisateur connecté et le bouton de déconnexion
     echo'<div class="text-center"';
-    echo '<table class="rounded-table" style="padding: 1rem; background-color: #fff !important;">';
+    echo '<div class="login-card-container">';
+    echo '<div class="login-card">';
+    echo '<table style="padding: 1rem;">';
     echo "<tr><td>";
     echo "Bienvenue " . $_SESSION['nom_utilisateur'] . "<br>";
     echo "Email: " . $_SESSION['email_utilisateur'] . "<br>";
@@ -50,15 +52,17 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     echo "</td></tr>";
     echo "</table>";
     echo "</div>";
+    echo "</div>";
+    echo "</div>";
 } 
  else {
     // Si l'utilisateur n'est pas connecté, affichez le formulaire de connexion
     echo '<div class="login-card-container">';
     echo '<div class="login-card">';
-    echo ' <div class="login-card-logo">';
+    echo '<div class="login-card-logo">';
     echo '<img src="images/logo.png" alt="logo">';
     echo '<div class="text-center" style="display: flex !important; justify-content: center !important; align-items: center !important; height: 70%; margin-right: 1rem;">';
-    echo '<table class="rounded-table" style="background-color: #fff !important; min-width: 70%; padding: .5rem !important; min-height: 70%; //">';
+    echo '<table style=" min-width: 70%; padding: .5rem !important; min-height: 70%; //">';
     echo '<tr><td>';
     echo '<div class="login-card-header">';//git
     echo '<h2>Se connecter</h2>';
