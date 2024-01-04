@@ -28,7 +28,7 @@
           $nom_auteur = $_POST['recherche'];
 
           // Préparer la requête SQL pour rechercher les livres liés à l'auteur recherché
-          $requete = "SELECT livre.titre FROM livre INNER JOIN auteur ON livre.noauteur = auteur.noauteur WHERE auteur.nom = '$nom_auteur'";
+          $requete = "SELECT livre.titre, livre.anneeparution FROM livre INNER JOIN auteur ON livre.noauteur = auteur.noauteur WHERE auteur.nom = '$nom_auteur'";
           // Exécuter la requête
           $resultat = $connexion->query($requete);
 
@@ -36,19 +36,21 @@
             // Afficher les résultats de la recherche
             if ($resultat->rowCount() > 0) {
               echo '<div class="text-center">';
-              echo "<h5 class= text_center>Livres de l'auteur $nom_auteur :</h2>";
+              echo "<h5 class= text_center>Livres de l'auteur $nom_auteur :</h5>";
               echo "<ul>";
               echo "</div>";
               while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                echo "<li><a href='detail.php'>" . $row['titre'] . "</a></li>";
+                echo "<li><a href='detail.php'><h5>" . $row['titre'] . " (" . $row['anneeparution'] . ")</h5></a></li>";
               }
               echo "</ul>";
               // Si aucun livre trouver
             } else {
-              echo "Aucun livre trouvé pour cet auteur.";
+              echo '<div class="text-center">';
+              echo "<h5>Aucun livre trouvé pour cet auteur.</h5>";
+              echo "</div>";
             }
           } else {
-            echo "Erreur dans la requête : " . $connexion->error;
+           $connexion->error;
           }
         }
         ?>
