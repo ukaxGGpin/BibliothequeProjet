@@ -7,7 +7,6 @@
   <title>Navbar personnalisée</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-    
     .navbar-custom {
       display: flex;
       justify-content: space-between;
@@ -16,11 +15,11 @@
 
     }
 
-    
+
     .form-control {
       border-radius: 20px;
     }
-    
+
 
     .search-input {
       flex: 7;
@@ -31,7 +30,7 @@
     }
 
     .panier-btn {
-      flex: 1; 
+      flex: 1;
     }
 
     .logo {
@@ -54,20 +53,22 @@
             </form>
           </div>
           <div class="search-btn">
-            <button class="rounded-table btn btn-primary" type="submit">
-             Recherche &#128269;
-            </button>
+            <form action="recherche.php" method="post">
+              <button class="rounded-table btn btn-primary" type="submit">
+                Recherche &#128269;
+              </button>
+            </form>
           </div>
           <div class="panier-btn">
             <form action="panier.php" method="post">
-              <button class="rounded-table btn btn-primary" type="submit">
+              <button  type="submit" class="rounded-table btn btn-primary">
                 Panier &#128722;
               </button>
             </form>
           </div>
           <div class="logo">
             <a class="navbar-brand">
-              <img src="images/logo.png" alt="Logo" style="width:60px;" >
+              <img src="images/logo.png" alt="Logo" style="width:60px;">
             </a>
           </div>
         </nav>
@@ -78,4 +79,3 @@
 </body>
 
 </html>
-
