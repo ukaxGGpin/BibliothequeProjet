@@ -15,6 +15,7 @@
   <div class="container-fluid">
     <!-- En-tête -->
     <?php
+    session_start();
     include("entete.html");
     ?>
     <!-- Corps page principale -->
@@ -28,7 +29,7 @@
           $nom_auteur = $_POST['recherche'];
 
           // Préparer la requête SQL pour rechercher les livres liés à l'auteur recherché
-          $requete = "SELECT livre.titre, livre.anneeparution FROM livre INNER JOIN auteur ON livre.noauteur = auteur.noauteur WHERE auteur.nom = '$nom_auteur'";
+          $requete = "SELECT *  FROM livre INNER JOIN auteur ON livre.noauteur = auteur.noauteur WHERE auteur.nom = '$nom_auteur'";
           // Exécuter la requête
           $resultat = $connexion->query($requete);
 
@@ -40,7 +41,7 @@
               echo "<ul>";
               echo "</div>";
               while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                echo "<li><a href='detail.php'><h5>" . $row['titre'] . " (" . $row['anneeparution'] . ")</h5></a></li>";
+                echo "<li><a href='detail.php?nolivre=". $row['nolivre'] . " '><h5>" . $row['titre'] . " (" . $row['anneeparution'] . ")</h5></a></li>";
               }
               echo "</ul>";
               // Si aucun livre trouver

@@ -60,7 +60,6 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     echo '<div class="login-card-container">';
     echo '<div class="login-card">';
     echo '<div class="login-card-logo">';
-    echo '<img src="images/logo.png" alt="logo">';
     echo '<div class="text-center" style="display: flex !important; justify-content: center !important; align-items: center !important; height: 70%; margin-right: 1rem;">';
     echo '<table style=" min-width: 70%; padding: .5rem !important; min-height: 70%; //">';
     echo '<tr><td>';
