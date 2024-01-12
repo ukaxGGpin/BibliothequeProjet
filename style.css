@@ -1,14 +1,13 @@
-@import url("reset.css");
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
-    background: linear-gradient(to right, #333399, #ff00cc);
+    background: linear-gradient(to right, #7575db, #ff00cc);
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 .carousel-item img {
@@ -77,4 +76,10 @@ button {
 
 .login-card input:focus {
     background: white;
+}
+
+.img img{
+  border-radius: 10%;
+  width: 300px;
+
 }

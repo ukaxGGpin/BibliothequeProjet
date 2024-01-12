@@ -3,11 +3,9 @@
 
 <head>
   <title>Bibliotheque LSB</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <?php
+  include('cookie.html')
+  ?>
 </head>
 
 <body>
@@ -15,6 +13,7 @@
 require_once('connexionSql.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Requete sql pour ajouter un membre
     $stmt = $connexion->prepare("INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal, profil) VALUES (:mail, :Mdp, :nom, :prenom, :adresse, :ville, :CodePostal, :Profil)");
 
     $mel = $_POST['mail'];
@@ -37,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->execute();
     $nb_ligne_affectees = $stmt->rowCount();
+    // Message d'enregistrement
     $nb_ligne_affectees . " Inscription enregistrée";
     $dernier_numero = $connexion->lastInsertId();
    
