@@ -28,12 +28,14 @@
     <!-- Corps page principale -->
       <div class="row">
         <?php
-        require_once("connexionSql.php")
-        if 
+        require_once("connexionSql.php");
+        
+        if ('')
         
         
         
         ?>
+
         <div class="col-md-8">
             <?php
         require_once('connexionSql.php');

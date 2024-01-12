@@ -23,7 +23,15 @@
     <div>
       <?php
       session_start();
-      include("entete.html");
+      require_once('authentification.php');
+      if ($_SESSION['nom_utilisateur'] === 'admin') {
+        
+        include_once("EnteteAdmin.html");
+      }
+      else {
+        
+        include("entete.html");
+    }
       ?>
       <!-- Corps page principale -->
       <div class="row">

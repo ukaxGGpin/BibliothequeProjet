@@ -54,6 +54,7 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     echo "</div>";
     echo "</div>";
     echo "</div>";
+    
 } 
  else {
     // Si l'utilisateur n'est pas connecté, affichez le formulaire de connexion
@@ -82,15 +83,8 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     echo '<div class="d-grid gap-2">';
     echo '<button type="submit" class="btn btn-primary" name="submit">Se connecter</button>';
     echo '</div>';
-    echo '</form>';
-    echo '<br><form action="AjouteUnMembre.php">';
-    echo '<div class="d-grid gap-2">';
-    echo '<button type="submit" class="btn btn-primary">Créer un compte</button>';
-    echo '</div>';
-    echo '</form>';
-    echo '</td></tr>';
-    echo '</table>';
-    echo "</div>";
+
+    
 
    }
 
