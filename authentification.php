@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 // Vérifiez si l'utilisateur est déjà connecté
 if (isset($_SESSION['utilisateur_connecte'])) {
     // Affichez les informations de l'utilisateur connecté et le bouton de déconnexion
-    echo'<div class="text-center"';
+    echo '<div class="text-center">';
     echo '<div class="login-card-container">';
     echo '<div class="login-card">';
     echo '<table style="padding: 1rem;">';
