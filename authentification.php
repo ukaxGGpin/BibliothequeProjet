@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête préparée pour l'authentification
-            $requete_authentification = $connexion->prepare("SELECT mel, nom FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
+            $requete_authentification = $connexion->prepare("SELECT mel, nom , profil FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
 
             $email = $_POST['mail'];
             $mdp = $_POST['Mdp'];
@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['utilisateur_connecte'] = true;
                 $_SESSION['nom_utilisateur'] = $utilisateur['nom'];
                 $_SESSION['email_utilisateur'] = $utilisateur['mel'];
+                $_SESSION['profil_utilisateur']=$utilisateur['profil'];
 
                 // Redirection ou autre action après une authentification réussie
             } else {
@@ -37,7 +38,7 @@ if (isset($_POST['submit'])) {
 
 
 // Vérifiez si l'utilisateur est déjà connecté
-if (isset($_SESSION['utilisateur_connecte'])) {
+if (isset($_SESSION['utilisateur_connecte']) && $_SESSION['profil_utilisateur'] == 'utilisateur')  {
     // Affichez les informations de l'utilisateur connecté et le bouton de déconnexion
     echo '<div class="text-center">';
     echo '<div class="login-card-container">';
@@ -54,8 +55,34 @@ if (isset($_SESSION['utilisateur_connecte'])) {
     echo "</div>";
     echo "</div>";
     echo "</div>";
-    
 } 
+elseif (isset($_SESSION['utilisateur_connecte']) && $_SESSION['profil_utilisateur'] == 'admin')  {
+
+    echo '<div class="text-center">';
+    echo '<div class="login-card-container">';
+    echo '<div class="login-card">';
+    echo '<table style="padding: 1rem;">';
+    echo "<tr><td>";
+    echo "Bienvenue " . $_SESSION['nom_utilisateur'] . "<br>";
+    echo "Email: " . $_SESSION['email_utilisateur'] . "<br>";
+    echo '<form action="ajouteUnMembre.php" method="post">';
+    echo '<br><button type="submit" class="btn btn-primary">Ajouter un membre</button>';
+    echo '</form>';
+    echo '<form action="AjouterUnLivre.php" method="post">';
+    echo '<br><button type="submit" class="btn btn-primary">Ajouter un livre</button>';
+    echo '</form>';
+    echo '<form action="deconnexion.php" method="post">';
+    echo '<br><button type="submit" class="btn btn-primary">Se déconnecter</button>';
+    echo '</form>';
+    echo "</td></tr>";
+    echo "</table>";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+}
+
+    
+ 
  else {
     // Si l'utilisateur n'est pas connecté, affichez le formulaire de connexion
     echo '<div class="login-card-container">';

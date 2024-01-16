@@ -19,9 +19,10 @@
   <div class="container-fluid">
     <!-- En-tête -->
     <?php
-    session_start();
-    include("entete.html");
-    ?>
+          //revoi les session_start car la ton sesion_start est en trop !
+          session_start();
+          include("entete.html");
+          ?>
     <!-- Corps page principale -->
     <div class="row">
       <div class="col-md-8">

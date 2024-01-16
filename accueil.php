@@ -25,65 +25,23 @@
           <?php
           //revoi les session_start car la ton sesion_start est en trop !
           session_start();
-          if ((isset($_SESSION['nom_utilisateur'])) && $_SESSION['nom_utilisateur'] == 'admin') {
-            include("EnteteAdmin.php");
-          } else {
-            include("entete.html");
-          }
+          include("entete.html");
           ?>
           <!-- Corps page principale -->
           <div class="row">
             <div class="col-md-8">
             <?php
               require_once('connexionSql.php');
-              //Requete pour chercher le livre
-              $requete = "SELECT * FROM `livre` ORDER BY dateajout DESC LIMIT 3";
-              $resultat = $connexion->query($requete);
-              $livre = $resultat->fetch(PDO::FETCH_ASSOC);
-              if ($resultat->rowCount() > 0) {
-                while ($row = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                  $imagePath = $row['image'];
-              ?>
-                  <div id="demo" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                      <!--The slideshow/carousel-->
-                      <div class="text-center">
-                        <h2 style="color: #fff;">Derniere acquisition</h2>
-                      </div>
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                      <?php
-                      echo '<img src=" ' . $livre['image'] . ' " alt=""> ';
-                      echo '<div class="carousel-caption">';
-                      echo "<h5><p>Titre: " . $livre['titre'] . "</p></h5>";
-                      echo '</div>';
-                      echo '<div class="carousel-item active">';
-                      echo '<img src=" ' . $livre['image'] . ' " alt=""> ';
-                      echo '<div class="carousel-caption">';
-                      echo "<h5><p>Titre: " . $livre['titre'] . "</p></h5>";
-                      echo '</div>';
-                      echo '<div class="carousel-item active">';
-                      echo '<img src=" ' . $livre['image'] . ' " alt=""> ';
-                      echo '<div class="carousel-caption">';
-                      echo "<h5><p>Titre: " . $livre['titre'] . "</p></h5>";
-                      echo '</div>';
-                      echo '</div>';
-                      echo '</div>';
-                      // Left and right controls/icons 
-                      echo '<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">';
-                      echo '<span class="carousel-control-prev-icon"></span>';
-                      echo '</button>';
-                      echo '<button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">';
-                      echo '<span class="carousel-control-next-icon"></span>';
-                      echo '</button>';
-                      echo '</div>';
-                      echo '</div>';
-                    }
-                  }
+echo '<div id"demo" class ';
+echo '';
+echo '';
+echo '';
+echo '';
+echo '';
+echo '';
 
+
+ 
                       ?>
             
 <div class="col-md-4">
