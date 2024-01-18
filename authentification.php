@@ -26,7 +26,9 @@ if (isset($_POST['submit'])) {
 
                 // Redirection ou autre action après une authentification réussie
             } else {
+                echo'<div class="text-center">';
                 echo "Email ou mot de passe incorrect.";
+                echo'</div>';
             }
         } catch (PDOException $e) {
             echo "Erreur de connexion: " . $e->getMessage();

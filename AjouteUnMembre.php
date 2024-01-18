@@ -9,47 +9,11 @@
 </head>
 
 <body>
-<?php
-require_once('connexionSql.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Requete sql pour ajouter un membre
-    $stmt = $connexion->prepare("INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal, profil) VALUES (:mail, :Mdp, :nom, :prenom, :adresse, :ville, :CodePostal, :Profil)");
-
-    $mel = $_POST['mail'];
-    $Mdp = $_POST['Mdp'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $adresse = $_POST['adresse'];
-    $ville = $_POST['ville'];
-    $codepostal = $_POST['CodePostal'];
-    $profil = $_POST['Profil'];
-
-    $stmt->bindValue(':mail', $mel, PDO::PARAM_STR);
-    $stmt->bindValue(':Mdp', $Mdp, PDO::PARAM_STR);
-    $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
-    $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-    $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-    $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
-    $stmt->bindValue(':CodePostal', $codepostal, PDO::PARAM_STR);
-    $stmt->bindValue(':Profil', $profil, PDO::PARAM_STR);
-
-    $stmt->execute();
-    $nb_ligne_affectees = $stmt->rowCount();
-    // Message d'enregistrement
-    $nb_ligne_affectees . " Inscription enregistrée";
-    $dernier_numero = $connexion->lastInsertId();
-   
-    if ($nb_ligne_affectees > 0) {
-      echo "Votre inscription a été enregistrée. ";
-      echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
-  }
-}
-?>
+  
 <div class="text-center">
 <table class=" table-bordered ">
     <tr>
-  <form  method="post">
+  <form  method="post" name="Ajouter_membre">
     <div class="mb-3 mt-3">
       <label for="prenom" class="form-label">Prénom:</label>
       <input type="text" class="form-control"  placeholder="Entrer votre prénom" name="prenom">
@@ -92,3 +56,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 </body>
 </html>
+
+<?php
+if (isset($_POST['Ajouter_membre'])) {
+ require_once('connexionSql.php');
+
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   // Requete sql pour mettre un membre
+   $stmt = $connexion->prepare("INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal, profil) VALUES (:mail, :Mdp, :nom, :prenom, :adresse, :ville, :CodePostal, :Profil)");
+
+   $mel = $_POST['mail'];
+   $Mdp = $_POST['Mdp'];
+   $nom = $_POST['nom'];
+   $prenom = $_POST['prenom'];
+   $adresse = $_POST['adresse'];
+   $ville = $_POST['ville'];
+   $codepostal = $_POST['CodePostal'];
+   $profil = $_POST['Profil'];
+
+   $stmt->bindValue(':mail', $mel, PDO::PARAM_STR);
+   $stmt->bindValue(':Mdp', $Mdp, PDO::PARAM_STR);
+   $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
+   $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+   $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+   $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
+   $stmt->bindValue(':CodePostal', $codepostal, PDO::PARAM_STR);
+   $stmt->bindValue(':Profil', $profil, PDO::PARAM_STR);
+
+   $stmt->execute();
+   $nb_ligne_affectees = $stmt->rowCount();
+   // Message d'enregistrement
+   echo $nb_ligne_affectees . " Inscription enregistrée";
+   $dernier_numero = $connexion->lastInsertId();
+
+   if ($nb_ligne_affectees > 0) {
+     echo "Votre inscription a été enregistrée. ";
+     echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
+   }
+ }
+}
+ ?>
+
