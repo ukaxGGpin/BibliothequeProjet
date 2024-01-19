@@ -30,7 +30,7 @@
         <?php
         require_once("connexionSql.php");
         
-        if ('rien')
+       //rien
         
         
         

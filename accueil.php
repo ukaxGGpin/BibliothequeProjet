@@ -35,29 +35,30 @@
              echo '<ul class="carousel-indicators">';
              echo '<li data-bs-slide-to="0" class="active"></li>';
              echo '<li data-bs-slide-to="1"></li>';
-             echo '</ul>'; // Correction de la balise fermante </ul>
+             echo '</ul>';
              echo '<div class="carousel-inner">';
-
+             
              require_once('connexionSql.php');
-             $stmt = $connexion->prepare("SELECT * FROM `livre` ORDER BY dateajout DESC LIMIT 3");
+             $stmt = $connexion->prepare("SELECT * FROM `livre` ORDER BY dateajout DESC LIMIT 2");
              $stmt->setFetchMode(PDO::FETCH_OBJ);
              $stmt->execute();
              
-             // Correction du nom de la variable image
-             while ($enregistrement = $stmt->fetch(PDO::FETCH_OBJ)) {
-               echo '<div class="carousel-item">';
-               echo '<img src="' . $enregistrement->image . '">';
-               echo '</div>';
-             }
+             $first = true; // Utilisé pour définir la classe active uniquement pour le premier élément
              
-             echo '</div>';
-             echo '<a class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">';
-             echo '<span class="carousel-control-prev-icon"></span>';
-             echo '</a>';
-             echo '<a class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">';
-             echo '<span class="carousel-control-next-icon"></span>';
-             echo '</a>';
-             echo '</div>';
+             while ($enregistrement = $stmt->fetch(PDO::FETCH_OBJ)) {
+                 echo '<div class="carousel-item container-fluid' . ($first ? 'active' : '') . '">';
+                 echo '<img src="' . $enregistrement->image . '" class="d-block w-100" alt="Image du livre">';
+                 echo '</div>';
+                 $first = false; // Désactive la classe active après le premier élément
+             }
+              echo '</div>';
+              echo '<a class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">';
+              echo '<span class="carousel-control-prev-icon"></span>';
+              echo '</a>';
+              echo '<a class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">';
+              echo '<span class="carousel-control-next-icon"></span>';
+              echo '</a>';
+              echo '</div>';
               ?>
 
               <div class="col-md-4">
