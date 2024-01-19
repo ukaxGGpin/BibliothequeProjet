@@ -4,16 +4,26 @@
 <head>
   <title>Bibliotheque LSB</title>
   <?php
+  session_start();
   include('cookie.html')
   ?>
 </head>
 
 <body>
+  <?php
+  if (!isset($_SESSION['utilisateur_connecte']) || $_SESSION['profil_utilisateur'] == 'utilisateur') {
   
+    echo "Connecté vous en tant que Admin pour accédée à cette page. ";
+    echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
+  } 
+  else{
+
+  
+  ?>
 <div class="text-center">
 <table class=" table-bordered ">
     <tr>
-  <form  method="post" name="Ajouter_membre">
+  <form  method="post" >
     <div class="mb-3 mt-3">
       <label for="prenom" class="form-label">Prénom:</label>
       <input type="text" class="form-control"  placeholder="Entrer votre prénom" name="prenom">
@@ -49,8 +59,8 @@
                     <option value="Admin">Admin</option>
                 </select>
             </div>
-  <br><button type="submit" class="btn btn-primary">Crée votre compte</button>
-</form>
+  <br><button type="submit" class="btn btn-primary" name="Ajouter_membre">Crée votre compte</button>
+</form> 
 </tr>
 </table>
 </div>
@@ -58,6 +68,8 @@
 </html>
 
 <?php
+
+
 if (isset($_POST['Ajouter_membre'])) {
  require_once('connexionSql.php');
 
@@ -94,6 +106,7 @@ if (isset($_POST['Ajouter_membre'])) {
      echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
    }
  }
-}
+
+
  ?>
 

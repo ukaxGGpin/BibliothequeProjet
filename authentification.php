@@ -5,7 +5,7 @@ require_once('connexionSql.php');
 if (isset($_POST['submit'])) {
     if (isset($_POST['mail']) && isset($_POST['Mdp'])) {
         try {
-            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //$connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête préparée pour l'authentification
             $requete_authentification = $connexion->prepare("SELECT mel, nom , profil FROM utilisateur WHERE mel = :email AND motdepasse = :mdp");
@@ -106,9 +106,6 @@ elseif (isset($_SESSION['utilisateur_connecte']) && $_SESSION['profil_utilisateu
     echo '<span class="form-item-icon material-symbols-rounded">lock</span>';
     echo '<input type="password" class="form-control" id="pwd" placeholder="Entrer votre mot de passe" name="Mdp"autofocus required><br>';
     echo '<div class="form-item-other">';
-    echo '<div class="checkbox">';
-    echo '<input type="checkbox" id="rememberMeCheckbox" checked>';
-    echo '<label for="rememberMeCheckbox">Se souvenir de moi</label><br>';
     echo '<div class="d-grid gap-2">';
     echo '<button type="submit" class="btn btn-primary" name="submit">Se connecter</button>';
     echo '</div>';
