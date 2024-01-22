@@ -106,7 +106,11 @@ if (isset($_POST['Ajouter_membre'])) {
      echo '<a href="accueil.php" class="btn btn-primary">Retour à la page d\'accueil</a>';
    }
  }
+}
 
+
+
+}
 
  ?>
 

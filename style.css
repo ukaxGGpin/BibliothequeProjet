@@ -17,6 +17,7 @@ body {
   margin: 0 auto; /* Pour centrer l'image horizontalement */
   object-fit: contain; /* Ajuster l'image à l'intérieur du conteneur */
 }
+
 img {
   border-radius: 70px;
 }
